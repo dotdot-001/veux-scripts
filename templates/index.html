@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Veux Scripts Collection
+    </title>
+    <style>
+        /* Themeee XD */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            background-color: #2f3136;
+            color: #dcddde;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* I'm not gay, but this part is about header aight? */
+        header{
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #202225;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1{
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p{
+            color: #7289da; 
+            /* discord color type shit, so yeah */
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* look at this clean search bar setup right here, if you don't you're gay */
+        .search-wrapper {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #202225;
+            border: 1px solid #4f545c;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            /* Iadded transition length for border and box-shadow to glow slow */
+            transition: border-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+        }
+
+        .search-input:focus {
+            border-color: #7289da;
+            /* slow glowing neon effect right here */
+            box-shadow: 0 0 15px #7289da, 0 0 5px #7289da;
+        }
+
+        .search-input::placeholder {
+            color: #72767d;
+        }
+
+        /* scripts, where you put your shi */
+        .script-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* thier individual places */
+        .script-card {
+            background-color: #36393f;
+            border: 1px solid #4f545c;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* animation shi */
+        .script-card.fade-in {
+            animation: smoothShow 0.4s ease forwards;
+        }
+
+        @keyframes smoothShow {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border-color: #7289da;
+        }
+
+        .script-name {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #4f545c;
+            padding-bottom: 5px;
+        }
+
+        .script-description {
+            color: #b9bbbe;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* download or view button */
+        .btn {
+            display: inline-block;
+            background-color: #7289da;
+            color: #fff;
+            text-align: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #5b73c7;
+        }
+
+        /* the footer or bottom shi */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #72767d;
+            font-size: 0.85rem;
+        }
+
+        /* fresh box styles to make the discord link pop out */
+        .footer-link {
+            display: inline-block;
+            background-color: #36393f;
+            border: 1px solid #4f545c;
+            color: #7289da;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .footer-link:hover {
+            background-color: #7289da;
+            color: #fff;
+            border-color: #7289da;
+        }
+
+        /* this shi will make it flexible for mobile, tab/ipad, and pc or laptop, let me cook */
+        @media (min-width: 600px) {
+            body {
+                padding: 30px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .script-container {
+                /* wll snaps into a 2-column layout if tablets */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        /* laps and pc user ahh */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 2.6rem;
+            }
+
+            .script-container {
+                /* snaps into a beautiful (but not gay) 4-column layout side-by-side on computers XD */
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 25px;
+            }
+            
+            .script-name {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>
+            Veux Script Collection
+        </h1>
+        <p>
+            Scripts Currently Available
+        </p>
+    </header>
+
+    <div class="search-wrapper">
+        <input type="text" id="scriptSearch" class="search-input" placeholder="Search for a script name...">
+    </div>
+
+    <main class="script-container">
+        
+        {% for key, info in scripts.items() %}
+        <div class="script-card">
+            <h2 class="script-name">{{ info.title }}</h2>
+            <p class="script-description">{{ info.desc }}</p>
+            <a href="/script/{{ key }}" target="_blank" class="btn">Get Script</a>
+        </div>
+        {% endfor %}
+
+    </main>
+
+    <footer>
+        <p>
+            <a href="https://discord.gg/akdck5mXp" 
+            target="_blank" 
+            class="footer-link">Veux | JOIN NOW!!!</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('scriptSearch').addEventListener('input', function() {
+            let filterValue = this.value.toLowerCase();
+            let cards = document.querySelectorAll('.script-card');
+
+            cards.forEach(function(card) {
+                let title = card.querySelector('.script-name').textContent.toLowerCase();
+                
+                // If the user typed letter pattern matches the title, it'll show, otherwise hide it
+                if (title.includes(filterValue)) {
+                    // Check if it was hidden, then trigger the fade-in animation
+                    if (card.style.display === 'none' || card.style.display === '') {
+                        card.classList.remove('fade-in');
+                        // Small trick to re-trigger animation cleanly
+                        void card.offsetWidth; 
+                        card.classList.add('fade-in');
+                    }
+                    card.style.display = 'flex';
+                } else {
+                    card.classList.remove('fade-in');
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

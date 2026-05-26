@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>
+        Veux Script Collection
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #2f3136;
+            color: #dcddde;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #202225;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            color: #fff;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        header p {
+            color: #7289da;
+            font-weight: bold;
+        }
+        .notebook-container {
+            background-color: #1e1f22;
+            border: 1px solid #4f545c;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .notebook-toolbar {
+            background-color: #202225;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            border-bottom: 1px solid #4f545c;
+        }
+        .control-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        .copy-btn {
+            background-color: #7289da;
+            color: #fff;
+        }
+        .copy-btn:hover {
+            background-color: #5b73c7;
+        }
+        .back-btn {
+            background-color: #4f545c;
+            color: #dcddde;
+        }
+        .back-btn:hover {
+            background-color: #686d73;
+            color: #fff;
+        }
+        .notebook-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .notebook-code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #85929E;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            Veux Script Collection
+        </h1>
+        <p>
+            View Script
+        </p>
+    </header>
+
+    <div class="notebook-container">
+        <div class="notebook-toolbar">
+            <button id="tabCopyBtn" class="control-btn copy-btn" onclick="copyCode()">Copy Script</button>
+            <button class="control-btn back-btn" onclick="window.close()">Back to Main</button>
+        </div>
+        <div class="notebook-body">
+            <!-- python code drops cleanly inside your ass -->
+            <pre><code id="codeBlock" class="notebook-code">{{ code }}</code></pre>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById('codeBlock').textContent;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.getElementById('tabCopyBtn');
+                btn.textContent = 'Copied! ✓';
+                btn.style.backgroundColor = '#43b581';
+                setTimeout(() => {
+                    btn.textContent = 'Copy Script';
+                    btn.style.backgroundColor = '#7289da';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
